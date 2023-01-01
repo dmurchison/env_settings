@@ -75,6 +75,9 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u:\W $ '
 fi
 unset color_prompt force_color_prompt
+TERM=cygwin
+export PS1
+export TERM
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -135,21 +138,36 @@ fi
 # RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+export EDITOR="code --wait"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PIPENV_VENV_IN_PROJECT=1
+
+
+
 # MY ALIAS
+
+# Git
 alias gs='git status'
 alias gi='git init'
 alias ga='git add'
 alias gc='git commit -m'
 alias yeet='git push'
 alias yoink='git pull'
+
+# Bundler
 alias bi='bundle install'
 alias ber='bundle exec rspec'
+
+# Node
 alias ni='npm install'
 alias niy='npm init -y'
 alias nrs='npm run start'
@@ -158,3 +176,4 @@ alias nrw='npm run watch'
 # PostgresQL (WSL Only)
 alias start-psql='sudo service postgresql start'
 alias run-psql='sudo -u postgres psql'
+

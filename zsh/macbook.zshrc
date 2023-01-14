@@ -1,6 +1,5 @@
 # MY ZSH FILE
 
-# MY PROMPTS
 
 # SET VAR FOR GIT BRANCH
 function git_branch_name()
@@ -14,6 +13,7 @@ function git_branch_name()
   fi
 }
 
+# MY PROMPTS
 setopt prompt_subst
 PROMPT='$B%F{10}%C/%f%F{1}$(git_branch_name)%f%b 💰 '
 RPROMPT='%F{10}%T%f'
@@ -40,14 +40,20 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#PYENV
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-# PIPENV
-export PIPENV_VENV_IN_PROJECT=1
 
 
+# PYTHON STUFF
+
+# PYENV (Currently not using)
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# PIPENV (Currently not using)
+# export PIPENV_VENV_IN_PROJECT=1
+
+
+# ANACONDA
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/duncanmurch/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -62,4 +68,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# MY CONDA ENV
+conda activate myconda
 

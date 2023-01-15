@@ -68,7 +68,6 @@
     "js": "html",
     "jsx": "html",
     "javascript": "javascriptreact",
-    "python": "html",
   },
 
   // Debugger Settings:

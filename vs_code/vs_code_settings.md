@@ -30,18 +30,17 @@
 // WSL EXTENSION PACK; v1.0.0; Microsoft:
   // Remote - WSL; v0.66.3; Microsoft
 
-// VS CODE SETTINGS: JSON OBJECT
 {
   // Startup:
   "workbench.startupEditor": "none",
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
 
-  // Python Settings:
-  "python.defaultInterpreterPath": "~/opt/anaconda3/envs/myconda/bin/python",
-
   // Editor Settings:
   "editor.suggest.showStatusBar": true,
+  "editor.accessibilitySupport": "off",
+  "editor.cursorBlinking": "smooth",
+  "editor.inlineSuggest.enabled": true,
   "editor.suggest.preview": true,
   "editor.snippetSuggestions": "top", 
   "editor.acceptSuggestionOnEnter": "off",
@@ -68,7 +67,8 @@
     "ruby": "html",
     "js": "html",
     "jsx": "html",
-    "javascript": "javascriptreact"
+    "javascript": "javascriptreact",
+    "python": "html",
   },
 
   // Debugger Settings:
@@ -97,18 +97,23 @@
   "workbench.iconTheme": "material-icon-theme",
   "diffEditor.ignoreTrimWhitespace": false,
   "git.autofetch": true,
-  "editor.inlineSuggest.enabled": true,
   "window.zoomLevel": 1,
   "solargraph.externalServer": {
     "host": "localhost",
     "port": 7658
   },
-  "editor.accessibilitySupport": "off",
   "github.copilot.enable": {
     "*": true,
     "yaml": false,
     "plaintext": false,
     "markdown": false
+  },
+
+  // Python Settings:
+  "python.defaultInterpreterPath": "~/opt/anaconda3/envs/myconda/bin/python",
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
   },
   
 

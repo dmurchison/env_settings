@@ -9,4 +9,5 @@
   - Then paste this into the DO window.
   - Connect...
     - `$ ssh -i /Users/username/.ssh/id_rsa root@ipv4`
-
+  Exit.
+    - `$ exit`

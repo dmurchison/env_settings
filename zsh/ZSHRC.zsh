@@ -15,20 +15,8 @@ function git_branch_name()
 
 # MY PROMPTS
 setopt prompt_subst
-PROMPT='$B%F{10}%C/%f%F{1}$(git_branch_name)%f%b 💰 '
+PROMPT='$B%F{10}%C/%f%F{1}$(git_branch_name)%f%b 💸 '
 RPROMPT='%F{10}%T%f'
-
-
-# MY ALIAS
-alias gs="git status"
-alias gi="git init"
-alias ga="git add"	
-alias gc="git commit -m"
-alias yeet="git push"
-alias yoink="git pull"
-alias bi="bundle install"
-alias ber="bundle exec rspec"
-alias ni="npm install"
 
 
 # RBENV
@@ -39,19 +27,6 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-
-# PYTHON STUFF
-
-# PYENV (Currently not using)
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init -)"
-
-# PIPENV (Currently not using)
-# export PIPENV_VENV_IN_PROJECT=1
-
 
 # ANACONDA
 # >>> conda initialize >>>
@@ -69,6 +44,21 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# MY CONDA ENV
-conda activate myconda
+# PYENV (Currently not using)
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# PIPENV (Currently not using)
+# export PIPENV_VENV_IN_PROJECT=1
+# MY ALIAS
+alias gs="git status"
+alias gi="git init"
+alias ga="git add"	
+alias gc="git commit -m"
+alias yeet="git push"
+alias yoink="git pull"
+alias bi="bundle install"
+alias ber="bundle exec rspec"
+alias ni="npm install"
 

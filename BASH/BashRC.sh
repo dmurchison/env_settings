@@ -1,6 +1,6 @@
+# MY .BASHRC FILE
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # If not running interactively, don't do anything
 case $- in
@@ -40,11 +40,6 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
 function git_branch_name()
 {
   branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
@@ -60,9 +55,6 @@ getopt prompt_subst
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
     else
 	color_prompt=
@@ -70,9 +62,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W/\033[01;31m$(git_branch_name)\[\033[00m\] $ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\W/\033[01;31m$(git_branch_name)\[\033[00m\] 💸 '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u:\W $ '
+    PS1='${debian_chroot:+($debian_chroot)}\u:\W 💸 '
 fi
 unset color_prompt force_color_prompt
 TERM=cygwin
@@ -92,34 +84,19 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -133,8 +110,6 @@ if ! shopt -oq posix; then
 fi
 
 
-
-
 # RBENV
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -146,34 +121,35 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # PYENV
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PIPENV_VENV_IN_PROJECT=1
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# export PIPENV_VENV_IN_PROJECT=1
+
+# Python - Conda
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/shlacker2020/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/shlacker2020/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/shlacker2020/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/shlacker2020/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 
+# My Aliases
+# ./bash_aliases
 
-# MY ALIAS
-
-# Git
-alias gs='git status'
-alias gi='git init'
-alias ga='git add'
-alias gc='git commit -m'
-alias yeet='git push'
-alias yoink='git pull'
-
-# Bundler
-alias bi='bundle install'
-alias ber='bundle exec rspec'
-
-# Node
-alias ni='npm install'
-alias niy='npm init -y'
-alias nrs='npm run start'
-alias nrw='npm run watch'
-
-# PostgresQL (WSL Only)
-alias start-psql='sudo service postgresql start'
-alias run-psql='sudo -u postgres psql'
+# Alias definitions.
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 

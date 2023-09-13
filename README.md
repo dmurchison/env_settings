@@ -1,1 +1,1 @@
-# Command Line & VS Code Setings
+# My Programming Settings for all machines and languages

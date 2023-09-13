@@ -86,3 +86,4 @@ alias yoink="git pull"
 alias bi="bundle install"
 alias ber="bundle exec rspec"
 alias ni="npm install"
+
